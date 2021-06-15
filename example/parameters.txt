@@ -1,0 +1,6 @@
+csvfile	sequence.csv
+startpos	483
+refgene	"dnaA"
+refstrand	+
+genomestart	1
+genomeend	6770626

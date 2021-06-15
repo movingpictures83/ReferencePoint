@@ -1,0 +1,2 @@
+Prefix plugins/ReferencePoint/example/
+Plugin ReferencePoint inputfile parameters.txt outputfile sequences.refgene.csv
