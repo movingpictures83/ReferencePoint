@@ -70,7 +70,10 @@ class ReferencePointPlugin:
                    entry[end_idx] = str(int(entry[end_idx])-self.genomeend)
                self.outputentries.append(entry)
        else: # Tougher, need to reverse direction and index
-           for i in list(range(refgene_idx, 0, -1))+list(range(len(self.entries)-1,refgene_idx,-1)):
+           donealready = []
+           #print(self.entries)
+           #print(len(self.entries))
+           for i in list(range(refgene_idx, -1, -1))+list(range(len(self.entries)-1,refgene_idx,-1)):
                entry = self.entries[i]
                # Initially, add delta
                # Then check boundaries
@@ -81,7 +84,11 @@ class ReferencePointPlugin:
                myEnd = entry[end_idx]
                entry[end_idx] = str(self.startpos+(refend-int(entry[start_idx])))
                if (len(entry[wstart_idx]) != 0):
+                   print("FOUND A WRAP")
+                   print(entry)
+                   myStart = entry[start_idx]
                    entry[start_idx] = str(self.startpos+(refend-int(entry[wend_idx])))
+                   entry[end_idx] = str(int(entry[start_idx])+int(entry[wend_idx])+int(myEnd)-int(myStart))
                    entry[wstart_idx] = ""
                    entry[wend_idx] = ""
                else:
